@@ -5,3 +5,8 @@
 .blue {
   background-color: blue;
 }
+
+:disabled {
+  cursor: not-allowed;
+  background-color: gray;
+}

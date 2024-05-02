@@ -22,7 +22,11 @@ test('버튼 클릭', () => {
   expect(buttonEl).toHaveStyle({ 'background-color': 'rgb(0, 0, 255)' });
 });
 
-test('체크박스', () => {
+/*
+ *use web color "gray"
+ *  Test flows:
+ *  */
+test('체크박스 체크 disable', () => {
   render(<App />);
 
   const buttonEl = screen.getByRole('button', { name: /blue/i });
@@ -30,4 +34,12 @@ test('체크박스', () => {
 
   expect(buttonEl).toBeEnabled();
   expect(checkboxEl).not.toBeChecked();
+
+  fireEvent.click(checkboxEl);
+  expect(buttonEl).toBeDisabled();
+  expect(buttonEl).toHaveClass('gray');
+
+  fireEvent.click(checkboxEl);
+  expect(buttonEl).toBeEnabled();
+  expect(buttonEl).toHaveClass('red');
 });
